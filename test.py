@@ -71,9 +71,10 @@ class Sauce_Test:
         loginBtn.click()
         sleep(10)
 
-        clickIcon = driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div[1]/div/div/form/div[3]/h3/button/svg")
-        clickIcon.click()
-        sleep(5)
+        errorBtn=driver.find_element(By.CLASS_NAME,"error-button")
+        sleep(2)
+        errorBtn.click()
+        sleep(10)
 
 
     def username_passwrod_true(self):
@@ -81,7 +82,7 @@ class Sauce_Test:
            driver.maximize_window()
            driver.get("https://www.saucedemo.com/")
            sleep(5)
-           usernama_input = driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div[1]/div/div/form/div[3]/h3/button")
+           usernama_input = driver.find_element(By.ID,"user-name")
            sleep(2)
            usernama_input.send_keys("standard_user")
            sleep(2)
@@ -95,6 +96,10 @@ class Sauce_Test:
            loginBtn.click()
            sleep(10)
 
+           productList = driver.find_elements(By.CLASS_NAME, "inventory_item") 
+           print(f"Ürün : {len(productList)}")
+           sleep(20)
+
 
 
 
@@ -105,5 +110,5 @@ testClass = Sauce_Test()
 testClass.username_and_password_null()
 testClass.password_null()
 testClass.user_locked()
-testClass.click_icon()
 testClass.username_passwrod_true() 
+testClass.click_icon()
